@@ -1,0 +1,12 @@
+.focuscont {
+    gap: 10px!important;
+    flex-direction: column;
+    margin: 15px 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.focusonn{
+    color: grey;
+}

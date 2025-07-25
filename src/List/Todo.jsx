@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Listings from './Listings';
 
-const Todo = () => {
+const Todo = ({task,setTask}) => {
 
-  const [task,setTask] = useState([])
   const inputref = useRef();
 
   const adding = ()=>{
     let val = inputref.current.value;
     if(val){
-      setTask((prevstate)=>[...prevstate,val]);
+      setTask((prevstate)=>[...prevstate,{id:Date.now(),val:val,checked:false}]);
       inputref.current.value='';
       inputref.current.focus()
     }
@@ -50,7 +49,7 @@ const Todo = () => {
 
         </div> : 
         <div className='tasks'>
-          <Listings task={task}/>
+          <Listings task={task} setTask={setTask}/>
       </div> }
 
     </div>

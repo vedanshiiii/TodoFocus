@@ -8,7 +8,9 @@
     display: flex;
     gap: 2px;
 }
-
+.wd90{
+    /* width: 100%; */
+}
 .mainb {
     padding: 20px;
     background-color: rgb(249 250 251);
@@ -78,6 +80,7 @@
     align-items: flex-end;
     margin: 15px 0;
 }
+
 .notask {
     width: 90%;
     text-align: center;
@@ -145,8 +148,13 @@
     text-align: center;
     padding: 10px;
     cursor: pointer;
+    border: none;
+    font-size: 18px;
 }
 
+.done .status{
+    background-color: rgb(164 170 182);
+}
 .delt{
     width: 18px;
     height: 18px;
@@ -157,4 +165,9 @@
 }
 .delt:hover{
     color: red;
+}
+
+.done .Tsk{
+    text-decoration: line-through;
+    color: grey;
 }
