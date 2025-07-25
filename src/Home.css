@@ -107,6 +107,10 @@
     gap: 10px;
 
 }
+.newtask.done{
+    opacity: 0.6;
+}
+
 .tasks{
     margin: 15px 0;
 }
@@ -154,6 +158,7 @@
 
 .done .status{
     background-color: rgb(164 170 182);
+    cursor: not-allowed;
 }
 .delt{
     width: 18px;

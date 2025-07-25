@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Listings from './Listings';
 
-const Todo = ({task,setTask}) => {
+const Todo = ({task,setTask,setFocuson}) => {
 
   const inputref = useRef();
 
@@ -12,8 +12,15 @@ const Todo = ({task,setTask}) => {
       inputref.current.value='';
       inputref.current.focus()
     }
-   
   }
+
+  const focuss=(id,val)=>{
+    setFocuson({
+      id:id,
+      val:val
+    })
+  }
+
 
   useEffect(()=>{
     inputref.current.focus()
@@ -49,7 +56,7 @@ const Todo = ({task,setTask}) => {
 
         </div> : 
         <div className='tasks'>
-          <Listings task={task} setTask={setTask}/>
+          <Listings task={task} setTask={setTask} focuss={focuss}/>
       </div> }
 
     </div>

@@ -10,3 +10,95 @@
 .focusonn{
     color: grey;
 }
+.focus{
+    width: 40%;
+    min-height: 650px;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid rgb(229 231 235 );
+    box-shadow: 7px 7px 10px rgb(222, 222, 222);
+    padding: 1.5rem;
+}
+
+.time {
+    width: 100%;
+    height: 50px;
+    /* background-color: grey; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px!important;
+}
+.seltime {
+    width: 22%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: rgb(240 240 240);
+    cursor: pointer;
+}
+
+.active{
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px!important;
+}
+
+.statusacti{
+    width: 30%;
+    height: 70px;
+    padding: 20px;
+    border-radius: 15px;
+    /* background-color: rgb(240 240 240); */
+    cursor: pointer;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
+}
+.st{
+    background-color: rgb(34 197 94);
+    /* color: whi; */
+}
+.ps{
+    background-color: rgb(234 179 8 );
+    /* color: whi; */
+}
+.rst{
+    background-color: rgb(107 114 128 );
+    /* color: whi; */
+}
+
+
+
+.inact .statusacti,.inact .seltime{
+    cursor: not-allowed;
+    background-color: rgb(240 240 240);
+    color: grey;
+}
+
+.timer-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f0f9ff, #ecfeff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid #e5e7eb; /* subtle outer ring */
+    font-size: 30px;
+    font-weight: bold;
+    color: #111827;
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.1);
+  }
+  
+  .divTm{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 10px;
+}
