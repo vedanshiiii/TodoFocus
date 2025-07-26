@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-const Timer = ({timeLeft, setTimeLeft,isRunning, setIsRunning}) => {
+const Timer = ({timeLeft, setTimeLeft,isRunning}) => {
 
   useEffect(() => {
     let interval;
@@ -27,7 +27,7 @@ const Timer = ({timeLeft, setTimeLeft,isRunning, setIsRunning}) => {
   };
 
   return (
-    <div className="idsf divTm"> <div className="timer-circle">
+    <div className="idsf divTm"> <div className={`timer-circle ${isRunning ?  'runn' : ''}`}>
     <h1>{formatTime(timeLeft)}</h1>
   </div></div>
    

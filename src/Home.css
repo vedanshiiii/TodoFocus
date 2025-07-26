@@ -176,3 +176,9 @@
     text-decoration: line-through;
     color: grey;
 }
+
+.activetask{
+    background-color: #cce5ff;
+    font-weight: bold;
+    border-left: 4px solid #007bff;
+}

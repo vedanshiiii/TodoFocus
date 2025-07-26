@@ -10,6 +10,19 @@
 .focusonn{
     color: grey;
 }
+
+.focusonn.start{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: blue;
+    text-align: center;
+    min-height: 70px;
+    font-size: 22px;
+    border-radius: 14px;
+    background-color: rgb(59 130 246 / 0.1);
+}
 .focus{
     width: 40%;
     min-height: 650px;
@@ -95,6 +108,12 @@
     box-shadow: 0 0 20px rgba(0, 200, 255, 0.1);
   }
   
+  .runn{
+
+    border: 6px solid #0852e6; /* subtle outer ring */
+    transition: cubic-bezier();
+
+  }
   .divTm{
     width: 100%;
     align-items: center;

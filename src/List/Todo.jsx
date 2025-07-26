@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Listings from './Listings';
 
-const Todo = ({task,setTask,setFocuson}) => {
+const Todo = ({task,setTask,setFocuson,focuson}) => {
 
   const inputref = useRef();
 
@@ -56,7 +56,7 @@ const Todo = ({task,setTask,setFocuson}) => {
 
         </div> : 
         <div className='tasks'>
-          <Listings task={task} setTask={setTask} focuss={focuss}/>
+          <Listings task={task} setTask={setTask} focuss={focuss} focuson={focuson}/>
       </div> }
 
     </div>

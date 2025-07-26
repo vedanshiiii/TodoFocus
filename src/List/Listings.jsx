@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Listings({task,setTask,focuss}) {
+function Listings({task,setTask,focuss,focuson}) {
 
 
     const checkUncheck=(id)=>{
@@ -25,7 +25,7 @@ const deleteit=(id)=>{
     <>
     {/* <div>Listings</div> */}
     {task.map((t)=>{
-       return  <div className={`idsf newtask ${t.checked ? 'done' : ''}`}>
+       return  <div className={`idsf newtask ${t.checked ? 'done' : ''}${focuson.id==t.id ? 'activetask' : ''}`}>
         <input id={t.id} className='chkbx' type="checkbox" onChange={()=>{checkUncheck(t.id)}} checked={t.checked}/>
         <label className={`Tsk`}>{t.val}</label>
         <button className="status" disabled={t.checked ? true : false} onClick={()=>{focuss(t.id,t.val)}}> {t.checked ? 'Done' : 'Focus'}</button>

@@ -9,8 +9,8 @@ export default function Home() {
   
   return (
     <div className='mainb idsf'> 
-    <Todo task={task} setTask={setTask} setFocuson={setFocuson}/>
-    <Focus task={task} setTask={setTask} focuson={focuson}/>
+    <Todo task={task} setTask={setTask} focuson={focuson} setFocuson={setFocuson}/>
+    <Focus focuson={focuson}/>
     
     </div>
    

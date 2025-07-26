@@ -2,7 +2,7 @@ import React from 'react';
 import './Focus.css'
 import '../Home.css'
 
-const Pauseplay = ({isRunning,setIsRunning,setTimeLeft,timeleft}) => {
+const Pauseplay = ({isRunning,setIsRunning,setTimeLeft}) => {
 
 
     const pauseplay=(val)=>{
