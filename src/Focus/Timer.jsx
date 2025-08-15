@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Timer = ({timeLeft, setTimeLeft,isRunning}) => {
 
+  //VVI
+  const interval = useRef(null);
+
   useEffect(() => {
-    let interval;
 
     if(isRunning){
-      interval = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(interval);
+      interval.current=setInterval(() => {
+        setTimeLeft((prev)=>{
+          if(prev <= 1){
+            clearInterval(interval.current);
             return 0;
           }
           return prev - 1;
@@ -17,13 +19,16 @@ const Timer = ({timeLeft, setTimeLeft,isRunning}) => {
       }, 1000);
     }
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval.current);
   }, [isRunning]);
+
+  
 
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    // return seconds;
   };
 
   return (
