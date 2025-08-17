@@ -7,17 +7,6 @@ function Header() {
   const {theme,setTheme} = useContext(ThemeContext)
 
   const chng=()=>{
-    try{
-      sessionStorage.removeItem('theme');
-      if(theme){
-        sessionStorage.setItem('theme','dark')
-      }
-      else{
-        sessionStorage.setItem('theme','light')
-      }
-     }catch{
-      console.log('error');
-     }
      setTheme(prev=>{ return prev==1 ? 0 : 1});
   }
 
