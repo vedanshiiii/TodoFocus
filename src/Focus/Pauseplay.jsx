@@ -1,6 +1,6 @@
 import React from 'react';
 import './Focus.css'
-import '../Home.css'
+import '../Pages/Home.css'
 
 const Pauseplay = ({isRunning,setIsRunning,setTimeLeft}) => {
 

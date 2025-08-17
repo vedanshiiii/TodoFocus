@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import { ThemeContext } from './Context';
+import { ThemeContext } from '../Helpers/Context';
 
 
 function Header() {

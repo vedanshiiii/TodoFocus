@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './Focus.css'
-import '../Home.css'
-import { ThemeContext } from '../Context';
+import '../Pages/Home.css'
+import { ThemeContext } from '../Helpers/Context';
 
 const Timings = ({setTimeLeft}) => {
 

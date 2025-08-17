@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import Todo from './List/Todo'
-import Focus from './Focus/Focus'
-import { ThemeContext } from './Context'
+import Todo from '../List/Todo'
+import Focus from '../Focus/Focus'
+import { ThemeContext } from '../Helpers/Context'
 
 export default function Home() {
 

@@ -1,38 +1,60 @@
-import { useEffect, useState } from 'react'
 import React from 'react'
 import './App.css'
-import Home from './Home'
-import Header from './Header'
-import './Home.css'
-import { ThemeContext } from './Context'
+import './Pages/Home.css'
+import './Pages/Top.css'
+import { ThemeContext } from './Helpers/Context'
+import { useSessionStorage } from './Helpers/Custom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Notfound from './Pages/Notfound'
+import NavBar from './Pages/NavBar'
+import Intro from './Intro'
+import ProtectHome from './Helpers/ProtectHome'
+import Header from './Pages/Header'
+import Home from './Pages/Home'
+
 
 function App() {
 
-const [theme,setTheme] = useState(1);
+const [theme,setTheme] = useSessionStorage('theme',1);
 
-useEffect(()=>{
-  let val;
-    try{
-      val=sessionStorage.getItem('theme');
-      if(val=='dark'){
-       setTheme(0)
-      }
-      else{
-        setTheme(1);
-      }
-     }catch{
-      console.log('error');
-     }
-},[])
+  const router = createBrowserRouter([
+    {
+      path: '/tasks',
+      element:  
+      <ThemeContext.Provider value={{theme,setTheme}}>
+        <ProtectHome>
+        <Header/>
+        <NavBar/>
+        <Home/>
+        </ProtectHome>
+    </ThemeContext.Provider>
+    },
+    {
+      path: '/',
+      element:  <ThemeContext.Provider value={{theme,setTheme}}>
+      <Header/>
+      <NavBar/>
+      <Intro/>
+    </ThemeContext.Provider>
+    },
+    {
+      path: '*',
+      element:  <ThemeContext.Provider value={{theme,setTheme}}>
+      <Header/>
+      <NavBar/>
+      <Notfound/>
+
+    </ThemeContext.Provider>
+    },
+
+  ])
+
 
   return (
     <>
       <div>
-        <ThemeContext.Provider value={{theme,setTheme}}>
-          <Header/>
-          <Home />
-        </ThemeContext.Provider>
-        
+        <RouterProvider router={router}/>
+      
       </div>
     </>
   )

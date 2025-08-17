@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Focus.css'
-import '../Home.css'
+import '../Pages/Home.css'
 import Timings from './Timings';
 import Pauseplay from './Pauseplay';
 import Timer from './Timer';

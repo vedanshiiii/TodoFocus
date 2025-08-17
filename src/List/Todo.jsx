@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Listings from './Listings';
+import { useDebounce } from '../Helpers/Custom';
 
 const Todo = ({task,setTask,setFocuson,focuson}) => {
 
   const inputref = useRef();
+  const [inp,setInp] = useState('');
+  const debouncedInp = useDebounce(inp,1000);
 
   const adding = ()=>{
     let val = inputref.current.value;
@@ -23,6 +26,13 @@ const Todo = ({task,setTask,setFocuson,focuson}) => {
 
 
   useEffect(()=>{
+    if(debouncedInp)
+     console.log(debouncedInp)
+  },[debouncedInp])
+
+
+
+  useEffect(()=>{
     inputref.current.focus()
   },[])
 
@@ -37,7 +47,7 @@ const Todo = ({task,setTask,setFocuson,focuson}) => {
       </div>
      
       <div className='idsf contin'>  
-        <input type='text' className='inptTd' placeholder='Add a new task...' ref={inputref} onKeyDown={(e)=>{
+        <input type='text' onChange={(e)=>{setInp(e.target.value)}} className='inptTd' placeholder='Add a new task...' ref={inputref} onKeyDown={(e)=>{
           if(e.key=='Enter'){
             adding()
           }
