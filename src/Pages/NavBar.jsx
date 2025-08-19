@@ -10,7 +10,7 @@ function NavBar() {
 
 
     return (
-        <div className={`hdr idsf navv ${theme ? 'light' : 'dark'}`}>
+        <div className={`hdr idsf navv ${theme==2 ? 'dark' : 'light'}`}>
 
             <div className='idsf '>
 

@@ -5,7 +5,7 @@ export const useSessionStorage=(key, def)=>{
      const [val,setVal] = useState(()=>{
         try{
             let e = JSON.parse(sessionStorage.getItem(key));
-         if(e==1 || e==0){
+         if(e){
             return e;
          }else{
             return def;

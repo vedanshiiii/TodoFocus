@@ -7,16 +7,16 @@ function Header() {
   const {theme,setTheme} = useContext(ThemeContext)
 
   const chng=()=>{
-     setTheme(prev=>{ return prev==1 ? 0 : 1});
+     setTheme(prev=>{ return prev==1 ? 2 : 1});
   }
 
 
 
       
   return (
-    <div className={`hdr idsf ${theme ? 'light' : 'dark'}`}> <h1 className='wd90'> 🧠 Smart To-Do List
+    <div className={`hdr idsf ${theme==2 ? 'dark' : 'light'}`}> <h1 className='wd90'> 🧠 Smart To-Do List
 </h1>
-<div className='idsf  switch'><div className={`drk ${theme ? '' : 'sel'}`} onClick={chng}>Dark</div><div  onClick={chng} className={`lt ${theme ? 'sel' : ''}`}>Light</div></div></div>
+<div className='idsf  switch'><div className={`lt ${theme==2 ? 'sel' : ''}`} onClick={chng}>Dark</div><div  onClick={chng} className={`drk ${theme==2 ? '' : 'sel'}`}>Light</div></div></div>
    
   )
 }

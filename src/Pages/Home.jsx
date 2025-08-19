@@ -12,7 +12,7 @@ export default function Home() {
   const [focuson,setFocuson] = useState({id:-1,val:'Select a task and click "Focus" to start a productivity session'})
   
   return (
-    <div className={`mainb idsf ${theme ? 'light' : 'dark'}`}> 
+    <div className={`mainb idsf ${theme==2 ? 'dark' : 'light'}`}> 
     <Todo task={task} setTask={setTask} focuson={focuson} setFocuson={setFocuson}/>
     <Focus focuson={focuson}/>
     
