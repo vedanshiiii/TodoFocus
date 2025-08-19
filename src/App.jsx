@@ -10,55 +10,56 @@ import NavBar from './Pages/NavBar'
 import Intro from './Intro'
 import ProtectHome from './Helpers/ProtectHome'
 import Header from './Pages/Header'
+import { store } from './stores/store'
 // import Home from './Pages/Home'
 // import Login from './Pages/Login'
-const Home = lazy(()=>import('./Pages/Home'));
-const Login = lazy(()=>import('./Pages/Login'));
+const Home = lazy(() => import('./Pages/Home'));
+const Login = lazy(() => import('./Pages/Login'));
 
 //lazy loading
 
 
 function App() {
 
-const [theme,setTheme] = useSessionStorage('theme',1);
+  const [theme, setTheme] = useSessionStorage('theme', 1);
 
   const router = createBrowserRouter([
     {
       path: '/tasks',
-      element:  
-      <ThemeContext.Provider value={{theme,setTheme}}>
-        <ProtectHome>
-        <Header/>
-        <NavBar/>
-        <Home/>
-        </ProtectHome>
-    </ThemeContext.Provider>
+      element:
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <ProtectHome>
+            <Header />
+            <NavBar />
+            <Home />
+          </ProtectHome>
+        </ThemeContext.Provider>
     },
     {
       path: '/login',
-      element:  
-      <ThemeContext.Provider value={{theme,setTheme}}>
-        <Header/>
-        <NavBar/>
-        <Login/>
-    </ThemeContext.Provider>
+      element:
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <Header />
+          <NavBar />
+          <Login />
+        </ThemeContext.Provider>
     },
     {
       path: '/',
-      element:  <ThemeContext.Provider value={{theme,setTheme}}>
-      <Header/>
-      <NavBar/>
-      <Intro/>
-    </ThemeContext.Provider>
+      element: <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Header />
+        <NavBar />
+        <Intro />
+      </ThemeContext.Provider>
     },
     {
       path: '*',
-      element:  <ThemeContext.Provider value={{theme,setTheme}}>
-      <Header/>
-      <NavBar/>
-      <Notfound/>
+      element: <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Header />
+        <NavBar />
+        <Notfound />
 
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
     },
 
   ])
@@ -67,11 +68,14 @@ const [theme,setTheme] = useSessionStorage('theme',1);
   return (
     <>
       <div>
-        <Suspense fallback={<div> LOADINGGGGGG </div>}>
-        <RouterProvider router={router}/>
-        </Suspense>
-        
-      
+        <Provider store={store}>
+          <Suspense fallback={<div> LOADINGGGGGG </div>}>
+            <RouterProvider router={router} />
+          </Suspense>
+        </Provider>
+
+
+
       </div>
     </>
   )
