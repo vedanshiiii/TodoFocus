@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import './App.css'
 import './Pages/Home.css'
 import './Pages/Top.css'
@@ -10,7 +10,12 @@ import NavBar from './Pages/NavBar'
 import Intro from './Intro'
 import ProtectHome from './Helpers/ProtectHome'
 import Header from './Pages/Header'
-import Home from './Pages/Home'
+// import Home from './Pages/Home'
+// import Login from './Pages/Login'
+const Home = lazy(()=>import('./Pages/Home'));
+const Login = lazy(()=>import('./Pages/Login'));
+
+//lazy loading
 
 
 function App() {
@@ -27,6 +32,15 @@ const [theme,setTheme] = useSessionStorage('theme',1);
         <NavBar/>
         <Home/>
         </ProtectHome>
+    </ThemeContext.Provider>
+    },
+    {
+      path: '/login',
+      element:  
+      <ThemeContext.Provider value={{theme,setTheme}}>
+        <Header/>
+        <NavBar/>
+        <Login/>
     </ThemeContext.Provider>
     },
     {
@@ -53,7 +67,10 @@ const [theme,setTheme] = useSessionStorage('theme',1);
   return (
     <>
       <div>
+        <Suspense fallback={<div> LOADINGGGGGG </div>}>
         <RouterProvider router={router}/>
+        </Suspense>
+        
       
       </div>
     </>

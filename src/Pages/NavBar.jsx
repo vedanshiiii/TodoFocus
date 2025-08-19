@@ -32,7 +32,7 @@ function NavBar() {
                     to="/login"
                     className={({ isActive }) => "navss " + (isActive ? "Navactive" : "")}
                 >
-                    Login
+                    Account
                 </NavLink>
                 <NavLink
                     to="/"
