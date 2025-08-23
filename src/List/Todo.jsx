@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Listings from './Listings';
 import { useDebounce } from '../Helpers/Custom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTask } from '../Features/taskSlice';
 
-const Todo = ({task,setTask,setFocuson,focuson}) => {
+
+
+const Todo = ({setFocuson,focuson}) => {
 
   const inputref = useRef();
   const [inp,setInp] = useState('');
   const debouncedInp = useDebounce(inp,1000);
+  const tasks = useSelector(state=>state.tasks.tasks);
+  const dispatch = useDispatch()
 
   const adding = ()=>{
     let val = inputref.current.value;
     if(val){
-      setTask((prevstate)=>[...prevstate,{id:Date.now(),val:val,checked:false}]);
+      dispatch(addTask(val));
       inputref.current.value='';
       inputref.current.focus()
     }
@@ -41,9 +47,9 @@ const Todo = ({task,setTask,setFocuson,focuson}) => {
       <div className='idsf contin'>
       <h2 className='h2t'>📝 Your Tasks
       </h2>
-      {task.length==0 ? 
+      {!tasks || tasks.length==0 ? 
 
-      <div></div> : <div className='blT'>{task.length>1 ? ` ${task.length} Tasks `: ` ${task.length} Task` }</div>}
+      <div></div> : <div className='blT'>{tasks.length>1 ? ` ${tasks.length} Tasks `: ` ${tasks.length} Task` }</div>}
       </div>
      
       <div className='idsf contin'>  
@@ -57,7 +63,7 @@ const Todo = ({task,setTask,setFocuson,focuson}) => {
        
       </div>
 
-      {task.length==0 ? 
+      {!tasks || tasks.length==0 ? 
       <div className='notask'>
           
           <h2>No tasks yet
@@ -66,7 +72,7 @@ const Todo = ({task,setTask,setFocuson,focuson}) => {
 
         </div> : 
         <div className='tasks'>
-          <Listings task={task} setTask={setTask} focuss={focuss} focuson={focuson}/>
+          <Listings focuss={focuss} focuson={focuson}/>
       </div> }
 
     </div>

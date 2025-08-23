@@ -1,32 +1,27 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { toggle,deleteTask } from '../Features/taskSlice';
 
-function Listings({task,setTask,focuss,focuson}) {
+function Listings({focuss,focuson}) {
 
-
+    const tasks = useSelector(state=>state.tasks.tasks);
+    const dispatch = useDispatch()
 //VVI
 
     const checkUncheck=(id)=>{
-        setTask((tasks)=>{
-            return tasks.map((task)=> {
-               return task.id!=id ? task : {...task, checked: !task.checked}
-            }) 
-          })   
+       dispatch(toggle(id))
     }
 
 
 const deleteit=(id)=>{
-    setTask((tasks)=>{
-        return tasks.filter((task)=>{
-           return  task.id!=id
-        })
-    })
+    dispatch(deleteTask(id))
 }
 
 
   return (
     <>
     {/* <div>Listings</div> */}
-    {task.map((t)=>{
+    {tasks.map((t)=>{
        return  <div className={`idsf newtask ${t.checked ? 'done' : ''}${focuson.id==t.id ? 'activetask' : ''}`}>
         <input id={t.id} className='chkbx' type="checkbox" onChange={()=>{checkUncheck(t.id)}} checked={t.checked}/>
         <label className={`Tsk`}>{t.val}</label>
