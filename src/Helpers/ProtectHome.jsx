@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from './Context'
+import React from 'react'
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 // import Home from './Home';
 
 function ProtectHome({ children }) {
 
-    const {theme} = useContext(ThemeContext);
+     const token = useSelector((state)=>state.login.token)
 
     return (
         <> 
         {
-            theme == 0 ? <Navigate to='/login' replace></Navigate> : 
+            !token ? <Navigate to='/login/redirect' replace></Navigate> : 
             <div>{children}</div>
         }
         </>

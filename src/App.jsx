@@ -7,10 +7,11 @@ import { useSessionStorage } from './Helpers/Custom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Notfound from './Pages/Notfound'
 import NavBar from './Pages/NavBar'
-import Intro from './Intro'
+import Intro from './Intro' 
 import ProtectHome from './Helpers/ProtectHome'
 import Header from './Pages/Header'
 import { store } from './stores/store'
+import { Provider } from 'react-redux'
 // import Home from './Pages/Home'
 // import Login from './Pages/Login'
 const Home = lazy(() => import('./Pages/Home'));
@@ -45,6 +46,15 @@ function App() {
         </ThemeContext.Provider>
     },
     {
+      path: "/login/:id",
+      element:
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <Header />
+          <NavBar />
+          <Login />
+        </ThemeContext.Provider>
+    },
+    {
       path: '/',
       element: <ThemeContext.Provider value={{ theme, setTheme }}>
         <Header />
@@ -69,7 +79,7 @@ function App() {
     <>
       <div>
         <Provider store={store}>
-          <Suspense fallback={<div> LOADINGGGGGG </div>}>
+          <Suspense fallback={<h1> LOADINGGGGGG </h1>}>
             <RouterProvider router={router} />
           </Suspense>
         </Provider>
