@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { toggle,deleteTask } from '../Features/taskSlice';
+import { toggleTask,deleteTask } from '../Features/taskSlice';
 
 function Listings({focuss,focuson}) {
 
@@ -9,7 +9,7 @@ function Listings({focuss,focuson}) {
 //VVI
 
     const checkUncheck=(id)=>{
-       dispatch(toggle(id))
+       dispatch(toggleTask(id))
     }
 
 

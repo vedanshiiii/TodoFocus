@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Listings from './Listings';
 import { useDebounce } from '../Helpers/Custom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTask,fetchTasks } from '../Features/taskSlice';
+import { addTasks,fetchTasks } from '../Features/taskSlice';
 
 
 
@@ -17,7 +17,7 @@ const Todo = ({setFocuson,focuson}) => {
   const adding = ()=>{
     let val = inputref.current.value;
     if(val){
-      dispatch(addTask(val));
+      dispatch(addTasks(val));
       inputref.current.value='';
       inputref.current.focus()
     }
