@@ -2,7 +2,8 @@
 import dotenv from "dotenv";
 import express from 'express'
 import cors from 'cors'
-import taskRouter from './server/router/router.js';
+import taskRouter from './server/router/taskRouter.js';
+import loginRouter from './server/router/loginRouter.js';
 
 dotenv.config();
 const port = process.env.PORT;
@@ -25,6 +26,7 @@ app.get('/',(req,res,next)=>{
 })
 
 app.use('/api',taskRouter)
+app.use('/user',loginRouter)
 
 
 

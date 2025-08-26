@@ -1,10 +1,10 @@
 import { Router } from "express";
 import connectDb from "../db/db.js";
-import { fetchTasks,addTask,delTask,modtask} from "../controllers/TaskController.js";
-
+import { fetchTasks,addTask,delTask,modtask} from "../controllers/TaskController.js"
+;
 const router = Router();
 
-connectDb();
+connectDb('ToDoApp');
 
 // const tasks = [{
 //     id:124214124,val:'First fake',checked:false
@@ -14,7 +14,7 @@ connectDb();
 // }];
 
 function logger(req,res,next){
-    console.log('logged from router');
+    console.log('logged from tasks router');
     next();
 }
 router.use(logger);

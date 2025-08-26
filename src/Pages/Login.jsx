@@ -16,11 +16,22 @@ function Login() {
 
 
 
-    const submitfunc = (data) => {
+    const loginFunc = (data) => {
         console.log('submitted')
+        data['act']='login'
         console.log(data)
         dispatch(loginApiHit(data));
     }
+
+
+    const signupFunc = (data) => {
+        console.log('submitted')
+         data['act']='signup'
+        console.log(data)
+        dispatch(loginApiHit(data));
+    }
+
+
 
 
 
@@ -37,7 +48,7 @@ dispatch(logout());
 
         </div> :  <div className='wholelog'>
             <div className={`formbod`} >
-                <form onSubmit={handleSubmit(submitfunc)} className='formDv idsf flc' >
+                <form className='formDv idsf flc' >
 
                     <div  className={`idsf flc`}>
                         <input type='email' {...register("name", { required: "Please provide your username to Login" })} className={`fieldsF`} placeholder='Enter username'/>
@@ -51,9 +62,21 @@ dispatch(logout());
                     </div>
 
                     <br />
-                    <button type='submit' className={`logSub`} >Log In</button>
+                    <button type='button'  onClick={handleSubmit(loginFunc)} className={`logSub`} >Log In</button>
+                    <button type='button' onClick={handleSubmit(signupFunc)}  className={`logSub`} >Sign Up</button>
+
                     {id=='redirect' &&  <p className='fieldsF err'> Please LOGIN to Focus on your tasks</p>}
-                    {status=='logging' ? <p className='fieldsF err'> Please wait!! we are Logging you in to your account ......</p> : status=='failed' ?   <p className='fieldsF err'> Please try after some time </p> :''}
+                    {status=='logging' ? 
+                    <p className='fieldsF err'> Please wait!! we are Logging you in to your account ......</p> : 
+                    status=='failed' ?   
+                    <p className='fieldsF err'> Please try after some time </p> : 
+                    status=='New' ?  
+                     <p className='fieldsF err'> No Such user founs. Please Signup To continue</p> : 
+                     status=='Invalid' ?  
+                      <p className='fieldsF err'> Incorrect Password </p> : 
+                      status=='Existing' ?  
+                       <p className='fieldsF err'> You are an existing user, please Login To ccntinue </p> :
+                       ''}
 
 
 
