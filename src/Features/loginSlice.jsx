@@ -47,8 +47,9 @@ export const loginslice = createSlice({
       ).addCase(
         loginApiHit.fulfilled, (state, action) => {
           if (action.payload.success) {
-            sessionStorage.setItem('token', action.payload.message);
-            return { ...state, token: action.payload };
+            const tok = action.payload.token;
+            sessionStorage.setItem('token',JSON.stringify(tok));
+            return { ...state, token: tok };
           }
           return { ...state, status: action.payload.message };
 

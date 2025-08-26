@@ -1,5 +1,9 @@
 import Login from "../models/loginModel.js";
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 export const getCreds = async (req, res) => {
     try {
@@ -32,9 +36,14 @@ export const signIn = async (req, res) => {
         const hashps = await bcrypt.hash(psw, salt);
 
         const newUsr = new Login({ username: usernm, passwordHash: hashps });
+        // eslint-disable-next-line no-unused-vars
         const newly = await newUsr.save()
 
-        return res.status(201).json({ success: true, message: "User Created" });
+
+        const accesstoken = jwt.sign({username:usernm},process.env.secretKeyjwt)
+        
+
+        return res.status(201).json({ success: true, message: "User Created",token:accesstoken });
 
     }
     catch (err) {
@@ -55,11 +64,11 @@ export const logIn = async (req, res) => {
         }
 
        const comp = await bcrypt.compare(psw, users.passwordHash);
-       console.log('passsword is true or not, ',comp)
        if(comp){
-        return res.status(201).json({ success: true, message: "User logged in" });
-       }
+        const accesstoken = jwt.sign({username:usernm},process.env.secretKeyjwt)
 
+        return res.status(201).json({ success: true, message: "User logged in",token:accesstoken  });
+       }
        return res.status(200).json({ success: false, message: "Invalid" });
 
 

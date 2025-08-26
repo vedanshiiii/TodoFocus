@@ -3,9 +3,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
+const token = JSON.parse(sessionStorage.getItem("token"));
 
 export const fetchTasks = createAsyncThunk('taskSlice/fetchTasks',async()=>{
-    const res = await axios.get('http://localhost:8080/api/tasks');
+    const res = await axios.get('http://localhost:8080/api/tasks',{headers: {Authorization:`Bearer ${token}`}});
     return res.data;
 
 })
@@ -17,13 +18,13 @@ export const addTasks = createAsyncThunk('taskSlice/addTasks',async (val)=>{
         val:val,
         checked:false
     }
-    const res = await axios.post('http://localhost:8080/api/tasks',tosave);
+    const res = await axios.post('http://localhost:8080/api/tasks',tosave,{headers: {Authorization:`Bearer ${token}`}});
     return res.data;
 
 })
 
 export const deleteTask = createAsyncThunk('taskSlice/deletetask',async (id)=>{
-    const res = await axios.delete(`http://localhost:8080/api/tasks/${id}`);
+    const res = await axios.delete(`http://localhost:8080/api/tasks/${id}`,{headers: {Authorization:`Bearer ${token}`}});
     if(res && res.data && res.data.success){
         return res.data;
     }
@@ -32,7 +33,7 @@ export const deleteTask = createAsyncThunk('taskSlice/deletetask',async (id)=>{
 })
 
 export const toggleTask = createAsyncThunk('taskSlice/toggleTask',async (id)=>{
-    const res = await axios.put(`http://localhost:8080/api/tasks/${id}`);
+    const res = await axios.put(`http://localhost:8080/api/tasks/${id}`,{headers: {Authorization:`Bearer ${token}`}});
     return res.data;
 
 })

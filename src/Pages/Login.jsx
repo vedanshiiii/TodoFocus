@@ -69,13 +69,13 @@ dispatch(logout());
                     {status=='logging' ? 
                     <p className='fieldsF err'> Please wait!! we are Logging you in to your account ......</p> : 
                     status=='failed' ?   
-                    <p className='fieldsF err'> Please try after some time </p> : 
+                    <p className='fieldsF err'> Please try again after some time </p> : 
                     status=='New' ?  
-                     <p className='fieldsF err'> No Such user founs. Please Signup To continue</p> : 
+                     <p className='fieldsF err'> No Such user found. Please SignUp To continue</p> : 
                      status=='Invalid' ?  
                       <p className='fieldsF err'> Incorrect Password </p> : 
                       status=='Existing' ?  
-                       <p className='fieldsF err'> You are an existing user, please Login To ccntinue </p> :
+                       <p className='fieldsF err'> You are an existing user, Please LogIn To Continue </p> :
                        ''}
 
 
