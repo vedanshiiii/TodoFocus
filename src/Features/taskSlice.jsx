@@ -33,7 +33,7 @@ export const deleteTask = createAsyncThunk('taskSlice/deletetask',async (id)=>{
 })
 
 export const toggleTask = createAsyncThunk('taskSlice/toggleTask',async (id)=>{
-    const res = await axios.put(`http://localhost:8080/api/tasks/${id}`,{headers: {Authorization:`Bearer ${token}`}});
+    const res = await axios.put(`http://localhost:8080/api/tasks/${id}`,{},{headers: {Authorization:`Bearer ${token}`}});
     return res.data;
 
 })
