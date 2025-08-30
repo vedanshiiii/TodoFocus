@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "dev:frontend": "vite",
     "dev:backend": "nodemon server.js",
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "start": "node server.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
