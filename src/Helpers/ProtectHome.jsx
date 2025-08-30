@@ -10,7 +10,7 @@ function ProtectHome({ children }) {
     return (
         <> 
         {
-            !token ? <Navigate to='/login/redirect' replace></Navigate> : 
+            !token ? <Navigate to='/todo-focus/login/redirect' replace></Navigate> : 
             <div>{children}</div>
         }
         </>

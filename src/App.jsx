@@ -26,7 +26,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/tasks',
+      path: '/todo-focus/tasks',
       element:
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <ProtectHome>
@@ -37,7 +37,7 @@ function App() {
         </ThemeContext.Provider>
     },
     {
-      path: '/login',
+      path: '/todo-focus/login',
       element:
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <Header />
@@ -46,7 +46,7 @@ function App() {
         </ThemeContext.Provider>
     },
     {
-      path: "/login/:id",
+      path: "/todo-focus/login/:id",
       element:
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <Header />
@@ -55,7 +55,7 @@ function App() {
         </ThemeContext.Provider>
     },
     {
-      path: '/',
+      path: '/todo-focus/',
       element: <ThemeContext.Provider value={{ theme, setTheme }}>
         <Header />
         <NavBar />
