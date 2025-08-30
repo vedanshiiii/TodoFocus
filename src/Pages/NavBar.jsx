@@ -15,27 +15,27 @@ function NavBar() {
             <div className='idsf '>
 
                 <NavLink
-                    to="/tasks"
+                    to="/todo-focus/tasks"
                     className={({ isActive }) => "navss " + (isActive ? "Navactive" : "")}
                 >
                     ToDos
                 </NavLink>
 
                 <NavLink
-                    to="/progress"
+                    to="/todo-focus/progress"
                     className={({ isActive }) => "navss " + (isActive ? "Navactive" : "")}
                 >
                     Progress
                 </NavLink>
 
                 <NavLink
-                    to="/login"
+                    to="/todo-focus/login"
                     className={({ isActive }) => "navss " + (isActive ? "Navactive" : "")}
                 >
                     Account
                 </NavLink>
                 <NavLink
-                    to="/"
+                    to="/todo-focus/"
                     className={({ isActive }) => "navss " + (isActive ? "Navactive" : "")}
                 >
                     Home
